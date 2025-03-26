@@ -31,6 +31,8 @@ class TTexts {
   static const String orSignUpWith = "Or Sign Up With";
   static const String iAgreeTo = "I agree to";
   static const String and = "and";
+  static const String done = "Done";
+  static const String submit = "Submit";
   static const String tContinue = "Continue";
   static const String privacyPolicy = "Privacy Policy";
   static const String termsOfUse = "Terms Of Use";
@@ -44,7 +46,7 @@ class TTexts {
   static const String loginSubTitle = "Discover Limitless Choices and Unmatched Convenience";
   static const String signUpTitle = "Let's create your account";
   static const String forgotPasswordTitle = "Forgot Password";
-  static const String forgotPasswordSubTitle = "Don't worry sometimes people can forget too, enter your email and we will send you a password reset link";
+  static const String forgotPasswordSubTitle = "Don't worry sometimes people can forget too, enter your email and we will send you a password reset link.";
   static const String changeYourPasswordTitle = "Password Reset Email Sent";
   static const String changeYourPasswordSubTitle = "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected";
   static const String confirmEmail = "Verify your email address";

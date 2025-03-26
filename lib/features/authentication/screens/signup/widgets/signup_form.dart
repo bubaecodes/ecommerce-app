@@ -12,7 +12,7 @@ class TSignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
+    final darkMode = THelperFunctions.isDarkMode(context);
     return Form(
       child: Column(
         children: [
@@ -48,7 +48,7 @@ class TSignupForm extends StatelessWidget {
               prefixIcon: Icon(Iconsax.user_edit),
               labelText: TTexts.username,
               // hintStyle: TextStyle(
-              //   color: dark ? TColors.textWhite : TColors.textPrimary
+              //   color: darkMode ? TColors.textWhite : TColors.textPrimary
               // ),
             ),
           ),
