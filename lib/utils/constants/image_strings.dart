@@ -28,6 +28,14 @@ class TImages{
   static const String furnitureIcon = "assets/icons/categories/furniture-icon.png";
   static const String jeweleryIcon = "assets/icons/categories/jewelery.png";
   static const String electronicsIcon = "assets/icons/categories/mobile-icon.png";
+
+  ///Banners
+  static const String promoBanner1 = "assets/images/banners/promo-banner-1.jpg";
+  static const String promoBanner2 = "assets/images/banners/promo-banner-2.jpg";
+  static const String promoBanner3 = "assets/images/banners/promo-banner-3.jpg";
+  static const String promoBanner4 = "assets/images/banners/promo-banner-4.jpg";
+
+
 }
 
 

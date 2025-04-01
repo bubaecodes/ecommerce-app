@@ -2,7 +2,9 @@ import 'package:ecommerce_app/common/widgets/custom_shapes/containers/primary_he
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:ecommerce_app/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerce_app/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:ecommerce_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
+import 'package:ecommerce_app/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/texts/section_heading.dart';
@@ -25,9 +27,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: TSizes.spaceBtwSections),
 
                 ///SearchBar
-                TSearchContainer(
-                  text: 'Search in Store',
-                ),
+                TSearchContainer(text: 'Search in Store'),
                 SizedBox(height: TSizes.spaceBtwSections),
 
                 ///Categories
@@ -50,12 +50,37 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             )),
+
+            ///Body
+            Padding(
+              padding: EdgeInsets.all(TSizes.defaultSpace),
+              child: TPromoSlider(
+                banners: [
+                  TImages.promoBanner1,
+                  TImages.promoBanner3,
+                  TImages.promoBanner4,
+                ],
+              ),
+            )
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
