@@ -82,6 +82,8 @@ class TImages{
   static const String productImage45 = "assets/images/products/acer_laptop_3.jpeg";
   static const String productImage46 = "assets/images/products/acer_laptop_4.jpeg";
   static const String productImage47 = "assets/images/products/acer_laptop_5.jpeg";
+  static const String productImage48 = "assets/images/products/cloth-removebg-preview.png";
+
 }
 
 
