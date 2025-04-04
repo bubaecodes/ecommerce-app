@@ -1,4 +1,6 @@
 import 'package:ecommerce_app/common/widgets/brands/brand_show_case.dart';
+import 'package:ecommerce_app/common/widgets/layouts/grid_layout.dart';
+import 'package:ecommerce_app/common/widgets/products/products_cards/product_card_vertical.dart';
 import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter/material.dart';
 
@@ -10,40 +12,41 @@ class TCategoryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(TSizes.defaultSpace),
-      child: Column(
-        children: [
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          child: Column(
+            children: [
+              ///Brands
+              const TBrandShowcase(
+                images: [
+                  TImages.productImage21,
+                  TImages.productImage32,
+                  TImages.productImage43
+                ],
+              ),
+              const SizedBox(height: TSizes.spaceBtwItems),
 
-          ///Brands
-          const TBrandShowcase(
-            images: [TImages.productImage44, TImages.productImage44, TImages.productImage44],
+              ///Products
+              TSectionHeading(
+                title: 'You might like',
+                showActionButton: true,
+                onPressed: () {},
+              ),
+              const SizedBox(height: TSizes.spaceBtwItems),
+
+              TGridLayout(
+                itemCount: 4,
+                itemBuilder: (_, index) => const TProductCardVertical(),
+              ),
+              const SizedBox(height: TSizes.spaceBtwSections),
+            ],
           ),
-
-          ///Products
-          TSectionHeading(title: 'You might like', showActionButton: true, onPressed: (){}),
-          const SizedBox(height: TSizes.spaceBtwItems)
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
