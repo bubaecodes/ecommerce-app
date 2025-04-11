@@ -40,6 +40,17 @@ class TImages{
   static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2-removebg-preview.png";
   static const String userProfileImage3 = "assets/images/reviews/review_profile_image_3-removebg-preview.png";
 
+  ///Payment Methods
+  static const String applyPay = "assets/icons/payment_methods/apple_pay-removebg-preview.png";
+  static const String googlePay = "assets/icons/payment_methods/google_pay-removebg-preview.png";
+  static const String creditCard = "assets/icons/payment_methods/credit_card-removebg-preview.png";
+  static const String masterCard = "assets/icons/payment_methods/master_card-removebg-preview.png";
+  static const String payPal = "assets/icons/payment_methods/paypal-removebg-preview.png";
+  static const String visa = "assets/icons/payment_methods/visa-removebg-preview.png";
+  static const String payStack = "assets/icons/payment_methods/paystack-removebg-preview.png";
+  static const String payTm = "assets/icons/payment_methods/paytm-removebg-preview.png";
+  static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon-removebg-preview.png";
+
   ///Profile
   static const String user = 'assets/images/user/user_icon-removebg-preview.png';
 
