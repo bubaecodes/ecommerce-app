@@ -127,7 +127,7 @@ class TProductCardVertical extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],
