@@ -59,6 +59,9 @@ class TTexts {
   static const String homeAppBarTitle = "Good day for shopping";
   static const String homeAppBarSubTitle = "Peter Pan";
 
+  ///Controllers
+  //static const String processingSignUP = 'We are processing your information...';
+
 }
 
 
