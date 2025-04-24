@@ -1,3 +1,7 @@
+import 'package:ecommerce_app/data/repositories/authentication/authentication_repository.dart';
+import 'package:ecommerce_app/data/repositories/user/user_repository.dart';
+import 'package:ecommerce_app/features/authentication/models/user/user_model.dart';
+import 'package:ecommerce_app/features/authentication/screens/signup/verify_email.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +25,7 @@ class SignupController extends GetxController{
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   /// --SIGNUP
-  Future<void> signup() async {
+  void signup() async {
     try {
       // Start Loading
       TFullScreenLoader.openLoadingDialog('We are processing your information...', TImages.onBoardingImage1);
@@ -41,21 +45,38 @@ class SignupController extends GetxController{
         );
         return;
       }
-      /// To continue at 29 mins of 35th video -------------
 
       // Register user in the Firebase Authentication & Save user data in the Firebase
+      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       // Save Authenticated user data in the Firebase Firestore
+      final newUser = UserModel(
+        id: userCredential.user!.uid,
+        firstName: firstName.text.trim(),
+        lastName: lastName.text.trim(),
+        username: username.text.trim(),
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '',
+      );
 
-      // Show Success Message
+      final userRepository = Get.put(UserRepository());
+      userRepository.saveUserRecord(newUser);
 
-      // Move to Verify Email Screen
-    } catch (e) {
-      // Show some Generic Error to the user
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
       //Remove Loader
       TFullScreenLoader.stopLoading();
+
+      // Show Success Message
+      TLoaders.successSnackBar(title: 'Congratulations', message: 'Your account has been created! Verify email to continue.');
+
+      // Move to Verify Email Screen
+      Get.to(() => const VerifyEmailScreen());
+    } catch (e) {
+      //Remove Loader
+      TFullScreenLoader.stopLoading();
+
+      // Show some Generic Error to the user
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }
