@@ -17,6 +17,8 @@ class TImages{
   ///Animations
   static const String verifyEmail = "assets/images/animations/emailverify.jpg";
   static const String successIllustration = "assets/images/animations/success.png";
+  static const String processingInfo = "assets/images/animations/doc-workflow.gif";
+  static const String successPopup = "assets/images/animations/success_popup.gif";
 
   ///Categories
   static const String sportIcon = "assets/icons/categories/sport-icon.png";
