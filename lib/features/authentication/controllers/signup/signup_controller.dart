@@ -38,7 +38,7 @@ class SignupController extends GetxController{
       }
 
       // Form Validation
-      if(signupFormKey.currentState!.validate()) return;
+      // if(!signupFormKey.currentState!.validate()) return;
 
       // Privacy Policy Check
       if (!privacyPolicy.value) {

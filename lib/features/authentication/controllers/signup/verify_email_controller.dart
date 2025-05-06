@@ -37,6 +37,7 @@ class VerifyEmailController extends GetxController {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
       if (user?.emailVerified ?? false) {
+        print('Im herrreeeeeeeeeeeeee===========');
         timer.cancel();
         Get.off(
           () => SuccessScreen(
@@ -54,6 +55,7 @@ class VerifyEmailController extends GetxController {
   checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
+      print('Hereeeee=====================================');
       Get.off(
         () => SuccessScreen(
             image: TImages.successPopup,

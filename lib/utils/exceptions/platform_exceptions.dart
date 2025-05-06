@@ -33,7 +33,7 @@ class TPlatformException implements Exception {
       case 'invalid-verification-id':
         return 'Invalid argument provided to the authentication method.';
       default:
-        return 'An unexpected Platform error occurred. Please try again.';
+        return 'An unexpected platform error occurred. Please try again.';
     }
   }
 }
