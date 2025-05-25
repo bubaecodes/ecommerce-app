@@ -10,7 +10,7 @@ class UserModel {
   final String username;
   final String email;
   String phoneNumber;
-  final String profilePicture;
+  late final String profilePicture;
 
   /// Constructor for UserModel.
   UserModel({
@@ -59,6 +59,7 @@ class UserModel {
     return {
       'FirstName': firstName,
       'LastName': lastName,
+      'Email': email,
       'Username': username,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,

@@ -4,6 +4,8 @@ import 'package:ecommerce_app/utils/constants/text_strings.dart';
 import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/repositories/authentication/authentication_repository.dart';
+
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({
     super.key,
@@ -18,6 +20,8 @@ class SuccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final controllerA = AuthenticationRepository.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -39,7 +43,7 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: onPressed,
+                  onPressed: () => onPressed(),
                   child: const Text(TTexts.tContinue)
                 ),
               ),

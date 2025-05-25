@@ -37,14 +37,16 @@ class VerifyEmailController extends GetxController {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
       if (user?.emailVerified ?? false) {
-        print('Im herrreeeeeeeeeeeeee===========');
         timer.cancel();
         Get.off(
           () => SuccessScreen(
               image: TImages.successPopup,
               title: TTexts.yourAccountCreatedTitle,
               subTitle: TTexts.yourAccountCreatedSubTitle,
-              onPressed: () => AuthenticationRepository.instance.screenRedirect,
+             onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+             //  onPressed: () {
+             //    print("object=================1");
+             //  },
           )
         );
       }
@@ -55,13 +57,16 @@ class VerifyEmailController extends GetxController {
   checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
-      print('Hereeeee=====================================');
       Get.off(
         () => SuccessScreen(
             image: TImages.successPopup,
             title: TTexts.yourAccountCreatedTitle,
-            subTitle: TTexts.yourAccountCreatedSubTitle,
-            onPressed: () => AuthenticationRepository.instance.screenRedirect,
+           // subTitle: TTexts.yourAccountCreatedSubTitle,
+            subTitle: "TTexts",
+            //onPressed: () => AuthenticationRepository.instance.screenRedirect,
+          onPressed: () {
+            print("object=============2");
+          },
         )
       );
     }

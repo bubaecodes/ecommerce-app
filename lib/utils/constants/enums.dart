@@ -3,6 +3,7 @@
 /// They cannot be created inside a class
 library;
 
+enum ProductType { single, variable }
 
 enum TextSizes { small, medium, large }
 

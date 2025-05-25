@@ -22,6 +22,9 @@ class AuthenticationRepository extends GetxController{
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  ///Get Authenticated User Data
+  User? get authUser => _auth.currentUser;
+
   ///Called from main.dart on app launch
   @override
   void onReady() {
@@ -33,12 +36,9 @@ class AuthenticationRepository extends GetxController{
 
   ///Function to show Relevant Screen
   screenRedirect() async {
-    print('Navvvvvvvvvvvvvvvvv Screeennnnnnnnnnn===');
     final user = _auth.currentUser;
     if(user != null){
-      print('meeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
       if(user.emailVerified){
-        print('looooooooooooooooooooooooooooooooooooool');
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email,));
@@ -108,10 +108,45 @@ class AuthenticationRepository extends GetxController{
 
 
   ///[ReAuthenticate] - ReAuthenticate User
+  Future<void> reAuthenticateWithEmailAndPassword(String email, String password) async {
+    try {
+      // Create a credential
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
 
+      // ReAuthenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      //throw  "this is error 4";
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again $e';
+    }
+  }
 
 
   ///[Email Verification] - Forgot Password
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      //throw  "this is error 4";
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
 
   /*--------------------------- Federated identity & social sign-in ---------------------------*/
@@ -158,7 +193,6 @@ class AuthenticationRepository extends GetxController{
   Future<void> logout() async {
     print('logout please========');
     try {
-      print('logooooooooouuuuuuuttt==============');
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
@@ -176,4 +210,44 @@ class AuthenticationRepository extends GetxController{
 
 
   ///[Delete User] - Remove user Auth and Firestore Account
+  // Future<void> deleteAccount() async {
+  //   try {
+  //     await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+  //     await _auth.currentUser?.delete();
+  //   } on FirebaseAuthException catch (e) {
+  //     throw TFirebaseAuthException(e.code).message;
+  //   } on FirebaseException catch (e) {
+  //     throw TFirebaseException(e.code).message;
+  //   } on FormatException catch (_) {
+  //     throw const TFormatException();
+  //   } on PlatformException catch (e) {
+  //     throw TPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw 'Something went wrong. Please try again';
+  //   }
+  // }
+
+  Future<void> deleteAccount() async {
+    try {
+      final user = _auth.currentUser;
+      if (user == null) {
+        throw Exception('No user is currently signed in.');
+      }
+
+      // await UserRepository.instance.removeUserRecord(user.uid);
+      await user.delete();
+
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code); // or just rethrow
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code);
+    } on FormatException {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code);
+    } catch (e) {
+      throw Exception('Something went wrong. Please try again.');
+    }
+  }
+
 }

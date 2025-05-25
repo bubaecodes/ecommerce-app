@@ -25,12 +25,13 @@ class TProfileMenu extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-                flex: 3,
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.bodySmall,
-                  overflow: TextOverflow.ellipsis,
-                )),
+              flex: 3,
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.bodySmall,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             Expanded(
                 flex: 5,
                 child: Text(

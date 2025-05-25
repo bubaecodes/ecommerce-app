@@ -76,7 +76,7 @@ class TProductAttributes extends StatelessWidget {
               ///Variation Description
               const TProductTitleText(
                 title:
-                    'This is the Description of the Product and it can go upto max 4 lines.',
+                    'This is the Description of the Product and it can go up to max 4 lines.',
                 smallSize: true,
                 maxLines: 4,
               )

@@ -36,6 +36,10 @@ class TImages{
   static const String promoBanner2 = "assets/images/banners/promo-banner-2.jpg";
   static const String promoBanner3 = "assets/images/banners/promo-banner-3.jpg";
   static const String promoBanner4 = "assets/images/banners/promo-banner-4.jpg";
+  static const String promoBanner5 = "assets/images/banners/promo-banner-5.png";
+  static const String promoBanner6 = "assets/images/banners/promo-banner-6.jpeg";
+  static const String promoBanner7 = "assets/images/banners/promo-banner-7.jpg";
+  static const String promoBanner8 = "assets/images/banners/promo-banner-8.jpg";
 
   ///Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1-removebg-preview.png";
@@ -55,6 +59,18 @@ class TImages{
 
   ///Profile
   static const String user = 'assets/images/user/user_icon-removebg-preview.png';
+
+  /// Brand Logo
+  static const String nikeLogo = 'assets/icons/brands/nike-logo.png';
+  static const String adidasLogo = 'assets/icons/brands/adidas-logo.png';
+  static const String kenwoodLogo = 'assets/icons/brands/kenwood-logo-1.png';
+  static const String ikeaLogo = 'assets/icons/brands/ikea-logo.png';
+  static const String appleLogo = 'assets/icons/brands/apple-logo.png';
+  static const String acerLogo = 'assets/icons/brands/acer-logo.png';
+  static const String jordanLogo = 'assets/icons/brands/jordan-logo.png';
+  static const String pumaLogo = 'assets/icons/brands/puma-logo-1.png';
+  static const String zaraLogo = 'assets/icons/brands/Zara-Logo.png';
+  static const String samsungLogo = 'assets/icons/brands/samsung-logo.jpg';
 
   ///Products
   static const String productImage1 = "assets/images/products/nike-shoes-removebg-preview.png";
@@ -104,6 +120,7 @@ class TImages{
   static const String productImage46 = "assets/images/products/acer_laptop_4-removebg-preview.png";
   static const String productImage47 = "assets/images/products/acer_laptop_5-removebg-preview.png";
   static const String productImage48 = "assets/images/products/cloth-removebg-preview.png";
+  static const String productImage49 = "assets/images/products/zara-jacket-removebg-preview.png";
 
 }
 

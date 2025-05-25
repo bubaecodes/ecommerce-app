@@ -3,20 +3,25 @@ import 'package:ecommerce_app/common/widgets/images/t_circular_image.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_title_text.dart';
 import 'package:ecommerce_app/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
+import 'package:ecommerce_app/features/shop/controllers/product/product_controller.dart';
+import 'package:ecommerce_app/features/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/enums.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
 class TProductMetaData extends StatelessWidget {
-  const TProductMetaData({super.key});
+  const TProductMetaData({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final darkMode = THelperFunctions.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,7 +35,7 @@ class TProductMetaData extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: TSizes.sm, vertical: TSizes.xs),
               child: Text(
-                '25%',
+                '$salePercentage%',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!
@@ -41,15 +46,16 @@ class TProductMetaData extends StatelessWidget {
             const SizedBox(width: TSizes.spaceBtwItems,),
 
             ///Price
-            Text('\$250', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
-            const SizedBox(width: TSizes.spaceBtwItems,),
-            const TProductPriceText(price: '175', isLarge: true,)
+            if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+            Text('\$${product.price}', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
+            if(product.productType == ProductType.single.toString() && product.salePrice > 0) const SizedBox(width: TSizes.spaceBtwItems,),
+            TProductPriceText(price: controller.getProductPrice(product), isLarge: true,)
           ],
         ),
         const SizedBox(width: TSizes.spaceBtwItems / 1.5),
 
         ///Title
-        const TProductTitleText(title: 'Green Nike Sports Shirt',),
+        TProductTitleText(title: product.title),
         const SizedBox(width: TSizes.spaceBtwItems),
 
         ///Stack Status
@@ -57,7 +63,7 @@ class TProductMetaData extends StatelessWidget {
           children: [
             const TProductTitleText(title: 'Status',),
             const SizedBox(width: TSizes.spaceBtwItems / 1.5),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium,),
+            Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium,),
           ],
         ),
 
@@ -67,12 +73,12 @@ class TProductMetaData extends StatelessWidget {
         Row(
           children: [
             TCircularImage(
-              image: TImages.shoeIcon,
+              image: product.brand != null ? product.brand!.image : '',
               width: 32,
               height: 32,
               overlayColor: darkMode ? TColors.white : TColors.black,
             ),
-            const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium,),
+            TBrandTitleWithVerifiedIcon(title: product.brand != null ? product.brand!.name : '', brandTextSize: TextSizes.medium,),
           ],
         )
       ],

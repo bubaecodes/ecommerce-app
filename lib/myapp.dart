@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/bindings/general_bindings.dart';
+import 'package:ecommerce_app/routes/app_routes.dart';
 import 'package:ecommerce_app/utils/constants/colors.dart';
 import 'package:ecommerce_app/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       initialBinding: GeneralBindings(),
+      getPages: AppRoutes.pages,
       //home: const OnBoardingScreen(),
       /// Show Loader or Circular Progress indicator meanwhile Authentication Repository is deciding to show relevant screen
       home: const Scaffold(
