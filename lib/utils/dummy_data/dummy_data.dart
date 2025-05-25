@@ -279,7 +279,7 @@ class TDummyData {
       // id: '1',
       // stock: 34,
       // price: 134,
-      // salePrice: 122.6,
+      salePrice: 122.6,
       // image: TImages.productImage1,
       // description: 'This is a Product description for Green Nike Sports Shoe.',
       // attributeValues: {'Color': 'Green', 'Size': 'EU 34'},
