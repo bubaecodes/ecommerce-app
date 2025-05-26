@@ -2,9 +2,10 @@ import 'package:ecommerce_app/common/widgets/brands/brand_show_case.dart';
 import 'package:ecommerce_app/common/widgets/layouts/grid_layout.dart';
 import 'package:ecommerce_app/common/widgets/products/products_cards/product_card_vertical.dart';
 import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
+import 'package:ecommerce_app/features/shop/controllers/product/product_controller.dart';
 import 'package:ecommerce_app/features/shop/models/category_model.dart';
-import 'package:ecommerce_app/features/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -16,6 +17,7 @@ class TCategoryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -44,7 +46,8 @@ class TCategoryTab extends StatelessWidget {
 
               TGridLayout(
                 itemCount: 4,
-                itemBuilder: (_, index) => TProductCardVertical(product: ProductModel.empty(),),
+                //itemBuilder: (_, index) => TProductCardVertical(product: ProductModel.empty()),
+                itemBuilder: (_, index) => TProductCardVertical(product: controller.featuredProducts[index]),
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
             ],

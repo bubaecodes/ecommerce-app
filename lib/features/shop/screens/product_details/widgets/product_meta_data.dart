@@ -36,6 +36,7 @@ class TProductMetaData extends StatelessWidget {
                   horizontal: TSizes.sm, vertical: TSizes.xs),
               child: Text(
                 '$salePercentage%',
+                //'',
                 style: Theme.of(context)
                     .textTheme
                     .labelLarge!

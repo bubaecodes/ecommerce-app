@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/enums.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key, required this.product});
@@ -64,9 +63,11 @@ class TProductCardVertical extends StatelessWidget {
                       radius: TSizes.sm,
                       backgroundColor: TColors.secondary.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                          horizontal: TSizes.sm, vertical: TSizes.xs
+                      ),
                       child: Text(
                         '$salePercentage%',
+                        //'',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -115,7 +116,7 @@ class TProductCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      if (product.productType == ProductType.single.toString() && product.salePrice > 0)
+                      //if (product.productType == ProductType.single.toString() && product.salePrice > 0)
                       Padding(
                         padding: const EdgeInsets.only(left: TSizes.sm),
                         child: Text(

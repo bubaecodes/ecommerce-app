@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:ecommerce_app/data/services/firebase_service/firebase_storage_service.dart';
 import 'package:ecommerce_app/features/shop/models/product_model.dart';
-import 'package:ecommerce_app/utils/constants/enums.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -48,36 +47,36 @@ class ProductRepository extends GetxController{
         //Assign URL to product.thumbnail attribute
         product.thumbnail = url;
 
-        // Product list of images
-        if (product.images != null && product.images!.isNotEmpty) {
-          List<String> imageUrl = [];
-          for (var image in product.images!){
-            // Get image data link from local assets
-            final assetImage = await storage.getImageDataFromAssets(image);
-
-            // Upload image and get its URL
-            final url = await storage.uploadImageData('Products/Images', assetImage, image);
-
-            // Assign URL to product.thumbnail attribute
-            imageUrl.add(url);
-          }
-          product.images!.clear();
-          product.images!.addAll(imageUrl);
-        }
-
-        // Upload Variation Images
-        if (product.productType == ProductType.variable.toString()) {
-          for (var variation in product.productVariations!) {
-            // Get image data link from local assets
-            final assetImage = await storage.getImageDataFromAssets(variation.image);
-
-            // Upload image and get its URL
-            final url = await storage.uploadImageData('Products/Images', assetImage, variation.image);
-
-            // Assign URL to variation.image attribute
-            variation.image = url;
-          }
-        }
+        // // Product list of images
+        // if (product.images != null && product.images!.isNotEmpty) {
+        //   List<String> imageUrl = [];
+        //   for (var image in product.images!){
+        //     // Get image data link from local assets
+        //     final assetImage = await storage.getImageDataFromAssets(image);
+        //
+        //     // Upload image and get its URL
+        //     final url = await storage.uploadImageData('Products/Images', assetImage, image);
+        //
+        //     // Assign URL to product.thumbnail attribute
+        //     imageUrl.add(url);
+        //   }
+        //   product.images!.clear();
+        //   product.images!.addAll(imageUrl);
+        // }
+        //
+        // // Upload Variation Images
+        // if (product.productType == ProductType.variable.toString()) {
+        //   for (var variation in product.productVariations!) {
+        //     // Get image data link from local assets
+        //     final assetImage = await storage.getImageDataFromAssets(variation.image);
+        //
+        //     // Upload image and get its URL
+        //     final url = await storage.uploadImageData('Products/Images', assetImage, variation.image);
+        //
+        //     // Assign URL to variation.image attribute
+        //     variation.image = url;
+        //   }
+        // }
 
         // Store product in firestore
         await _db.collection("Products").doc(product.id).set(product.toJson());
