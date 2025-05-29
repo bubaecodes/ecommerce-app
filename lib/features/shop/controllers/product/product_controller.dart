@@ -35,6 +35,18 @@ class ProductController extends GetxController {
     }
   }
 
+
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      // Fetch products
+      final products = await productRepository.getFeaturedProducts();
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
   /// Get the product price or price range for variations
   String getProductPrice(ProductModel product) {
     double smallestPrice = double.infinity;
@@ -67,7 +79,7 @@ class ProductController extends GetxController {
         return largestPrice.toString();
       } else {
         // Otherwise, return a price range
-        return '\$$smallestPrice - \$$largestPrice';
+        return '$smallestPrice - \$$largestPrice';
       }
     }
   }

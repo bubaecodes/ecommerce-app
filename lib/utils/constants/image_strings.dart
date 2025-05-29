@@ -40,6 +40,8 @@ class TImages{
   static const String promoBanner6 = "assets/images/banners/promo-banner-6.jpeg";
   static const String promoBanner7 = "assets/images/banners/promo-banner-7.jpg";
   static const String promoBanner8 = "assets/images/banners/promo-banner-8.jpg";
+  static const String promoBanner9 = "assets/images/banners/promo-banner-9.jpg";
+  static const String promoBanner10 = "assets/images/banners/promo-banner-10.jpg";
 
   ///Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1-removebg-preview.png";

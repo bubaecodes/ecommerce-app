@@ -6,6 +6,7 @@ import 'package:ecommerce_app/common/widgets/layouts/grid_layout.dart';
 
 import 'package:ecommerce_app/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
+import 'package:ecommerce_app/features/shop/controllers/brand_controller.dart';
 import 'package:ecommerce_app/features/shop/controllers/category_controller.dart';
 import 'package:ecommerce_app/features/shop/screens/brand/all_brands.dart';
 import 'package:ecommerce_app/features/shop/screens/store/widgets/category_tab.dart';
@@ -22,6 +23,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = CategoryController.instance.featuredCategories;
+    final brandController = Get.put(BrandController());
     final dark = THelperFunctions.isDarkMode(context);
 
     return DefaultTabController(
@@ -87,13 +89,18 @@ class StoreScreen extends StatelessWidget {
                         height: TSizes.spaceBtwItems / 1.5,
                       ),
 
-                      TGridLayout(
-                        itemCount: 4,
-                        mainAxisExtent: 80,
-                        itemBuilder: (_, index) {
-                          return const TBrandCard(showBorder: false);
-                        },
-                      )
+                      /// brands GRID
+                      Obx(
+                        () {
+                          return TGridLayout(
+                            itemCount: 4,
+                            mainAxisExtent: 80,
+                            itemBuilder: (_, index) {
+                              return const TBrandCard(showBorder: false);
+                            },
+                          );
+                        }
+                      ),
                     ],
                   ),
                 ),
