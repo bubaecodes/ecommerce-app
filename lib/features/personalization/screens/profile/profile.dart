@@ -4,7 +4,7 @@ import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
 import 'package:ecommerce_app/features/personalization/controllers/user_controller.dart';
 import 'package:ecommerce_app/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:ecommerce_app/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:ecommerce_app/utils/shimmer/shimmer.dart';
+import 'package:ecommerce_app/common/widgets/shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

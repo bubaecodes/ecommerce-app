@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
 import 'package:ecommerce_app/features/shop/models/product_model.dart';
 import 'package:ecommerce_app/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
@@ -23,6 +25,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    print(jsonEncode(product));
     return Scaffold(
       bottomNavigationBar: const TBottomAddToCart(),
       body: SingleChildScrollView(

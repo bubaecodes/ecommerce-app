@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/common/widgets/appbar/appbar.dart';
+import 'package:ecommerce_app/features/personalization/controllers/address_controller.dart';
 import 'package:ecommerce_app/features/personalization/screens/address/add_new_address.dart';
 import 'package:ecommerce_app/features/personalization/screens/address/widgets/single_address.dart';
+import 'package:ecommerce_app/utils/helpers/cloud_helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,25 +15,36 @@ class UserAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddressController());
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => const AddNewAddressScreen()),
-        child: const Icon(Iconsax.add, color: TColors.white,),
-      ),
       appBar: TAppBar(
         showBackArrow: true,
         title: Text('Addresses', style: Theme.of(context).textTheme.headlineSmall,),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
-          child: Column(
-            children: [
-              TSingleAddress(selectedAddress: true),
-              TSingleAddress(selectedAddress: false)
-            ],
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          child: FutureBuilder(
+            future: controller.getAllUserAddresses(),
+            builder: (context, snapshot) {
+
+              /// helper function: handle loader, no record or error message
+              final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+              if (response != null) return response;
+
+              final addresses = snapshot.data!;
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: addresses.length,
+                itemBuilder: (_, index) => TSingleAddress(address: addresses[index], onTap: (){})
+              );
+            }
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.to(() => const AddNewAddressScreen()),
+        child: const Icon(Iconsax.add, color: TColors.white,),
       ),
     );
   }

@@ -19,6 +19,7 @@ class TImages{
   static const String successIllustration = "assets/images/animations/success.png";
   static const String processingInfo = "assets/images/animations/doc-workflow.gif";
   static const String successPopup = "assets/images/animations/success_popup.gif";
+  static const String emptyAnimation = "assets/images/animations/empty_animation.gif";
 
   ///Categories
   static const String sportIcon = "assets/icons/categories/sport-icon.png";

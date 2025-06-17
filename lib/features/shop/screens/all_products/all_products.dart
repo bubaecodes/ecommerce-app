@@ -5,9 +5,10 @@ import 'package:ecommerce_app/features/shop/controllers/product/all_products_con
 import 'package:ecommerce_app/features/shop/models/product_model.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
 import 'package:ecommerce_app/utils/helpers/cloud_helper_functions.dart';
-import 'package:ecommerce_app/utils/shimmer/vertical_product_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../common/widgets/shimmer/vertical_product_shimmer.dart';
 
 class AllProducts extends StatelessWidget {
   const AllProducts(

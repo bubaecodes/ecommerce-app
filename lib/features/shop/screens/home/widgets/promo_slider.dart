@@ -4,9 +4,10 @@ import 'package:ecommerce_app/common/widgets/images/t_rounded_image.dart';
 import 'package:ecommerce_app/features/shop/controllers/banner_controller.dart';
 import 'package:ecommerce_app/utils/constants/colors.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
-import 'package:ecommerce_app/utils/shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../../common/widgets/shimmer/shimmer.dart';
 
 class TPromoSlider extends StatelessWidget {
   const TPromoSlider({

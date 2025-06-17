@@ -6,7 +6,9 @@ import 'package:ecommerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../utils/shimmer/shimmer.dart';
+import '../../../../../common/widgets/shimmer/shimmer.dart';
+
+
 
 class THomeAppBar extends StatelessWidget {
   const THomeAppBar({

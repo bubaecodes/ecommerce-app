@@ -9,11 +9,13 @@ import 'package:ecommerce_app/common/widgets/texts/section_heading.dart';
 import 'package:ecommerce_app/features/shop/controllers/brand_controller.dart';
 import 'package:ecommerce_app/features/shop/controllers/category_controller.dart';
 import 'package:ecommerce_app/features/shop/screens/brand/all_brands.dart';
+import 'package:ecommerce_app/features/shop/screens/brand/brand_products.dart';
 import 'package:ecommerce_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/widgets/shimmer/brands_shimmer.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 
@@ -92,11 +94,23 @@ class StoreScreen extends StatelessWidget {
                       /// brands GRID
                       Obx(
                         () {
+                          if (brandController.isLoading.value) return const TBrandsShimmer();
+
+                          if (brandController.featuredBrands.isEmpty) {
+                            return Center(
+                              child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)),
+                            );
+                          }
                           return TGridLayout(
-                            itemCount: 4,
+                            itemCount: brandController.featuredBrands.length,
                             mainAxisExtent: 80,
                             itemBuilder: (_, index) {
-                              return const TBrandCard(showBorder: false);
+                              final brand = brandController.featuredBrands[index];
+                              return TBrandCard(
+                                showBorder: true,
+                                brand: brand,
+                                onTap: () => Get.to(() => BrandProducts(brand: brand)),
+                              );
                             },
                           );
                         }

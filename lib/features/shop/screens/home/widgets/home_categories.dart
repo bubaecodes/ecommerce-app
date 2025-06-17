@@ -4,7 +4,7 @@ import 'package:ecommerce_app/features/shop/screens/sub_category/sub_categories.
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../utils/shimmer/category_shimmer.dart';
+import '../../../../../common/widgets/shimmer/category_shimmer.dart';
 
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
@@ -39,7 +39,7 @@ class THomeCategories extends StatelessWidget {
               return TVerticalImageText(
                 image: category.image,
                 title: category.name,
-                onTap: () => Get.to(() => const SubCategoriesScreen()),
+                onTap: () => Get.to(() => SubCategoriesScreen(category: category)),
               );
             },
           ),
@@ -48,6 +48,18 @@ class THomeCategories extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

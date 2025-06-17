@@ -70,6 +70,7 @@ class ProductModel {
       'ProductVariation': productVariations != null
           ? productVariations!.map((e) => e.toJson()).toList()
           : [],
+
     };
   }
 

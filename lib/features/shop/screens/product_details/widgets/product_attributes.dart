@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommerce_app/common/widgets/chips/choice_chip.dart';
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_price_text.dart';
@@ -107,11 +109,12 @@ class TProductAttributes extends StatelessWidget {
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
                     Obx(
                       () {
+                        print(attribute.toString());
                         return Wrap(
                             spacing: 8,
                             children: attribute.values!
                                 .map((attributeValue) {
-                              final isSelected = controller.selectedAttributes[attribute.name] == attributeValue;
+                              final isSelected = controller.selectedAttributes[attribute.name!] == attributeValue;
                               final available = controller
                                   .getAttributesAvailabilityInVariation(product.productVariations!, attribute.name!)
                                   .contains(attributeValue);
@@ -119,11 +122,11 @@ class TProductAttributes extends StatelessWidget {
                                   text: attributeValue,
                                   selected: isSelected,
                                   onSelected: available
-                                      ? (selected){
-                                    if (selected && available) {
-                                      controller.onAttributeSelected(product, attribute.name ?? '', attributeValue);
+                                    ? (selected){
+                                      if (selected && available) {
+                                        controller.onAttributeSelected(product, attribute.name ?? '', attributeValue);
+                                      }
                                     }
-                                  }
                                       : null);
                             }).toList());
                       }

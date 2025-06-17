@@ -11,11 +11,12 @@ import 'package:ecommerce_app/features/shop/screens/home/widgets/home_categories
 import 'package:ecommerce_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ecommerce_app/utils/constants/sizes.dart';
 import 'package:ecommerce_app/utils/dummy_data/dummy_data.dart';
-import 'package:ecommerce_app/utils/shimmer/vertical_product_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/widgets/shimmer/vertical_product_shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../data/repositories/brands/brand_repository.dart';
 import '../../../../data/repositories/categories/category_repository.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,6 +28,7 @@ class HomeScreen extends StatelessWidget {
     final prController = Get.put(ProductRepository());
     final cController = Get.put(CategoryRepository());
     final psController = Get.put(BannerRepository());
+    final bController = Get.put(BrandRepository());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -59,7 +61,9 @@ class HomeScreen extends StatelessWidget {
                           print("object");
                           // cController.uploadDummyData(TDummyData.categories);
                           // psController.uploadDummyData(TDummyData.banners);
-                          prController.uploadDummyData(TDummyData.products);
+                          //prController.uploadDummyData(TDummyData.products);
+                          bController.uploadDummyData(TDummyData.brandCategories);
+                          prController.uploadDummyData(TDummyData.productCategories);
                         },
                         child: const TSectionHeading(title: 'Popular Categories',)
                       ),

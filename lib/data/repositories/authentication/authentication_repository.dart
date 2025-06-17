@@ -3,6 +3,7 @@ import 'package:ecommerce_app/features/authentication/screens/onboarding/onboard
 import 'package:ecommerce_app/features/authentication/screens/signup/verify_email.dart';
 import 'package:ecommerce_app/navigation_menu.dart';
 import 'package:ecommerce_app/utils/exceptions/firebase_auth_exceptions.dart';
+import 'package:ecommerce_app/utils/local_storage/storage_utility.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -37,8 +38,16 @@ class AuthenticationRepository extends GetxController{
   ///Function to show Relevant Screen
   screenRedirect() async {
     final user = _auth.currentUser;
+
     if(user != null){
+
+      // if user is logged in
       if(user.emailVerified){
+
+        // initialize user specific storage
+        await TLocalStorage.init(user.uid);
+
+        // if the user's email is verified, navigate to the main navigation menu
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email,));

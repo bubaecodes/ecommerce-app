@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/common/styles/shadows.dart';
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:ecommerce_app/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerce_app/common/widgets/images/t_rounded_image.dart';
+import 'package:ecommerce_app/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_title_text.dart';
 import 'package:ecommerce_app/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
@@ -14,6 +14,8 @@ import 'package:ecommerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../../utils/constants/enums.dart';
 
 
 class TProductCardVertical extends StatelessWidget {
@@ -57,6 +59,7 @@ class TProductCardVertical extends StatelessWidget {
                   ),
       
                   ///Sale Tag
+                  if (salePercentage != null)
                   Positioned(
                     top: 12,
                     child: TRoundedContainer(
@@ -77,13 +80,10 @@ class TProductCardVertical extends StatelessWidget {
                   ),
       
                   ///Favorite Icon Button
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: TCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: TFavoriteIcon(productId: product.id)
                   ),
                 ],
               ),
@@ -116,7 +116,7 @@ class TProductCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      //if (product.productType == ProductType.single.toString() && product.salePrice > 0)
+                      if (product.productType == ProductType.single.toString() && product.salePrice > 0)
                       Padding(
                         padding: const EdgeInsets.only(left: TSizes.sm),
                         child: Text(

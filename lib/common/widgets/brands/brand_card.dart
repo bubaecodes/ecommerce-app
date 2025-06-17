@@ -3,6 +3,7 @@ import 'package:ecommerce_app/common/widgets/images/t_circular_image.dart';
 import 'package:ecommerce_app/common/widgets/texts/t_brand_title_text_with_verified_icon.dart';
 import 'package:flutter/material.dart';
 
+import '../../../features/shop/models/brand_model.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/enums.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -14,8 +15,10 @@ class TBrandCard extends StatelessWidget {
     super.key,
     required this.showBorder,
     this.onTap,
+    required this.brand
   });
 
+  final BrandModel brand;
   final bool showBorder;
   final void Function()? onTap;
 
@@ -35,12 +38,14 @@ class TBrandCard extends StatelessWidget {
             ///Icon
             Flexible(
               child: TCircularImage(
-                isNetworkImage: false,
-                image: TImages.clothIcon,
+                isNetworkImage: true,
+                image: brand.image,
                 backgroundColor: Colors.transparent,
                 overlayColor: isDark
-                    ? TColors.white
-                    : TColors.black,
+                    // ? TColors.light
+                    // : TColors.black,
+                    ? TColors.black
+                    : TColors.light,
               ),
             ),
             const SizedBox(
@@ -53,12 +58,12 @@ class TBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TBrandTitleWithVerifiedIcon(
-                    title: 'Nike',
+                  TBrandTitleWithVerifiedIcon(
+                    title: brand.name,
                     brandTextSize: TextSizes.large,
                   ),
                   Text(
-                    '256 products',
+                    '${brand.productsCount ?? 0} products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
