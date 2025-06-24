@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:ecommerce_app/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerce_app/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_price_text.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_title_text.dart';
@@ -12,7 +11,6 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../features/shop/controllers/product/product_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/enums.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../images/t_rounded_image.dart';
 

@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/common/widgets/icons/t_circular_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

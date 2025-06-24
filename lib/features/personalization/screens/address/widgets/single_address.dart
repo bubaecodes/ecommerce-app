@@ -63,9 +63,9 @@ class TSingleAddress extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: TSizes.sm / 2),
-                    const Text('(+123) 456 789', maxLines: 1, overflow: TextOverflow.ellipsis),
+                    Text(address.formattedPhoneNo, maxLines: 1, overflow: TextOverflow.ellipsis),
                     const SizedBox(height: TSizes.sm / 2),
-                    const Text('73796 Timmy Cloves, South Liana, Maine, 75534, USA', softWrap: true),
+                    Text(address.toString(), softWrap: true),
                   ],
                 )
               ],

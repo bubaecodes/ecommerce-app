@@ -6,7 +6,6 @@ import 'package:ecommerce_app/features/shop/models/brand_model.dart';
 import 'package:ecommerce_app/features/shop/screens/brand/brand_products.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';

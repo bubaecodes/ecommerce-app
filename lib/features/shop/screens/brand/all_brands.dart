@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/shimmer/brands_shimmer.dart';
-import '../../models/brand_model.dart';
 
 class AllBrandsScreen extends StatelessWidget {
   const AllBrandsScreen({super.key});

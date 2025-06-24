@@ -49,12 +49,3 @@ class BannerModel {
     }
   }
 }
-
-
-
-
-
-
-
-
-

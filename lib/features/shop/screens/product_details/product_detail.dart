@@ -27,7 +27,7 @@ class ProductDetailScreen extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     print(jsonEncode(product));
     return Scaffold(
-      bottomNavigationBar: const TBottomAddToCart(),
+      bottomNavigationBar: TBottomAddToCart(product: product),
       body: SingleChildScrollView(
         child: Column(
           children: [

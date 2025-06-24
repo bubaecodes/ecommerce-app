@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/data/services/firebase_service/firebase_storage_service.dart';
 import 'package:ecommerce_app/features/shop/models/brand_category_model.dart';
 import 'package:ecommerce_app/features/shop/models/brand_model.dart';
 import 'package:ecommerce_app/utils/exceptions/firebase_exceptions.dart';

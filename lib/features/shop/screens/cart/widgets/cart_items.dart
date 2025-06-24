@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/common/widgets/products/cart/add_remove_button.dart';
 import 'package:ecommerce_app/common/widgets/products/cart/cart_item.dart';
 import 'package:ecommerce_app/common/widgets/texts/product_price_text.dart';
+import 'package:ecommerce_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 
@@ -15,35 +17,46 @@ class TCartItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      separatorBuilder: (_, __) =>
-          const SizedBox(height: TSizes.spaceBtwSections),
-      itemCount: 4,
-      itemBuilder: (_, index) => Column(
-        children: [
-          /// Cart Item
-          const TCartItem(),
-          if(showAddRemoveButtons) const SizedBox(height: TSizes.spaceBtwItems),
+    final cartController = CartController.instance;
+    return Obx(
+      () => ListView.separated(
+        shrinkWrap: true,
+        separatorBuilder: (_, __) => const SizedBox(height: TSizes.spaceBtwSections),
+        itemCount: cartController.cartItems.length,
+        itemBuilder: (_, index) => Obx(
+          () {
+            final item = cartController.cartItems[index];
+            return Column(
+              children: [
+                /// Cart Item
+                TCartItem(cartItem: item),
+                if(showAddRemoveButtons) const SizedBox(height: TSizes.spaceBtwItems),
 
-          ///Add Remove Button Row with total price
-          if(showAddRemoveButtons)
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  ///Extra Space
-                  SizedBox(width: 70),
+                ///Add Remove Button Row with total price
+                if(showAddRemoveButtons)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          ///Extra Space
+                          const SizedBox(width: 70),
 
-                  /// Add & Remove Buttons
-                  TProductQuantityWithAddRemoveButton(),
-                ],
-              ),
-              TProductPriceText(price: '249')
-            ],
-          )
-        ],
+                          /// Add & Remove Buttons
+                          TProductQuantityWithAddRemoveButton(
+                            quantity: item.quantity,
+                            add: () => cartController.addOneToCart(item),
+                            remove: () => cartController.removeOneFromCart(item),
+                          ),
+                        ],
+                      ),
+                      TProductPriceText(price: (item.price * item.quantity).toStringAsFixed(1))
+                    ],
+                  )
+              ],
+            );
+          }
+        ),
       ),
     );
   }

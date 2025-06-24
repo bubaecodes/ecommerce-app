@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:ecommerce_app/data/services/firebase_service/firebase_storage_service.dart';
 import 'package:ecommerce_app/features/shop/models/product_category_model.dart';
 import 'package:ecommerce_app/features/shop/models/product_model.dart';
 import 'package:ecommerce_app/utils/exceptions/firebase_exceptions.dart';

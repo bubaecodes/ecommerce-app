@@ -79,7 +79,7 @@ class FavoritesController extends GetxController {
 
   void saveFavoritesToStorage() {
     final encodedFavorites = json.encode(favorites);
-    TLocalStorage.instance().saveData('favorites', encodedFavorites);
+    TLocalStorage.instance().saveData('favorites', encodedFavorites); //possible error for the selected wishlist not showing
   }
 
   Future<List<ProductModel>> favoriteProducts() async {

@@ -24,21 +24,28 @@ class UserAddressScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
-          child: FutureBuilder(
-            future: controller.getAllUserAddresses(),
-            builder: (context, snapshot) {
+          child: Obx(
+            () => FutureBuilder(
+              // use key to trigger refresh
+              key: Key(controller.refreshData.value.toString()),
+              future: controller.getAllUserAddresses(),
+              builder: (context, snapshot) {
 
-              /// helper function: handle loader, no record or error message
-              final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
-              if (response != null) return response;
+                /// helper function: handle loader, no record or error message
+                final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+                if (response != null) return response;
 
-              final addresses = snapshot.data!;
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: addresses.length,
-                itemBuilder: (_, index) => TSingleAddress(address: addresses[index], onTap: (){})
-              );
-            }
+                final addresses = snapshot.data!;
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: addresses.length,
+                  itemBuilder: (_, index) => TSingleAddress(
+                      address: addresses[index],
+                      onTap: () => controller.selectAddress(addresses[index]),
+                  )
+                );
+              }
+            ),
           ),
         ),
       ),
@@ -49,6 +56,10 @@ class UserAddressScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 
 

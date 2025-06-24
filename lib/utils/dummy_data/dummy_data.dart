@@ -25,6 +25,8 @@ class TDummyData {
 
   /// User
   // static final UserModel user = UserModel(
+  //   id: '0',
+  //   username: 'code_bubae',
   //   firstName: 'Coding',
   //   lastName: 'with Bubae',
   //   email: 'bubaetina@gmail.com',

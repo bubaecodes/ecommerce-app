@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:ecommerce_app/common/widgets/chips/choice_chip.dart';
 import 'package:ecommerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';

@@ -50,7 +50,7 @@ class TImages{
   static const String userProfileImage3 = "assets/images/reviews/review_profile_image_3-removebg-preview.png";
 
   ///Payment Methods
-  static const String applyPay = "assets/icons/payment_methods/apple_pay-removebg-preview.png";
+  static const String applePay = "assets/icons/payment_methods/apple_pay-removebg-preview.png";
   static const String googlePay = "assets/icons/payment_methods/google_pay-removebg-preview.png";
   static const String creditCard = "assets/icons/payment_methods/credit_card-removebg-preview.png";
   static const String masterCard = "assets/icons/payment_methods/master_card-removebg-preview.png";

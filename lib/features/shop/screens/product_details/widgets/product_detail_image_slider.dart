@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/common/widgets/appbar/appbar.dart';
 import 'package:ecommerce_app/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:ecommerce_app/common/widgets/icons/t_circular_icon.dart';
 import 'package:ecommerce_app/common/widgets/images/t_rounded_image.dart';
 import 'package:ecommerce_app/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:ecommerce_app/features/shop/controllers/product/images_controller.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-import 'package:iconsax/iconsax.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
